@@ -7,7 +7,16 @@ class Form extends React.Component{
         eMail: "",
         password: ""
     };
-    
+    change= (e) =>{
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+
+    };
+    onSubmit = e => {
+        e.preventDefault();
+        console.log(this.state);
+    }
     render(){
         return(
            <div class="container">
@@ -17,8 +26,9 @@ class Form extends React.Component{
                 </div>
                 <div class="col-sm-6">
                     <input
+                    name="firstName"
                     placeholder="Enter your First Name" value={this.state.firstName} 
-                    onChange={e => this.setState({firstName: e.target.firstName})}>
+                    onChange={e => this.change(e)}>
                     </input>
                 </div>   
             </div>
@@ -28,8 +38,9 @@ class Form extends React.Component{
                 </div>
                 <div class="col-sm-6">
                     <input
+                    name="lastName"
                     placeholder="Enter your Last Name" value={this.state.lastName} 
-                    onChange={e => this.setState({lastName: e.target.lastName})}>
+                    onChange={e => this.change(e)}>
                     </input>
                 </div>   
             </div>
@@ -39,8 +50,9 @@ class Form extends React.Component{
                 </div>
                 <div class="col-sm-6">
                     <input
+                    name="eMail"
                     placeholder="example@example.com" value={this.state.eMail} 
-                    onChange={e => this.setState({eMail: e.target.eMail})}>
+                    onChange={e => this.change(e)}>
                     </input>
                 </div>   
             </div>
@@ -50,13 +62,14 @@ class Form extends React.Component{
                 </div>
                 <div class="col-sm-6">
                     <input
+                    name="password"
                     type="password"
                     placeholder="8-16 characters" value={this.state.password} 
-                    onChange={e => this.setState({password: e.target.password})}>
+                    onChange={e => this.change(e)}>
                     </input>
                 </div>   
             </div>
-              
+              <button onClick={e => this.onSubmit(e)}>Submit</button>
             </div> 
             );
     }
